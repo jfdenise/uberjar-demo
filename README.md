@@ -22,8 +22,7 @@ WildFly s2i galleon feature-pack would need to be used at uberjar creation time 
 
 NB: wildfly-uberjar-runtime-centos7 image is WIP evolution of wildfly-runtime image. Official wildfly-runtime-image would be extended with the support.
 
-Copy 
 * oc import-image wildfly-uberjar-runtime --from=quay.io/jfdenise/wildfly-uberjar-runtime-centos7 --confirm
 * oc new-build --strategy source --binary --image-stream wildfly-uberjar-runtime --name test-uber
 * oc start-build test-uber --form-dir ./target/uberjar
-Then deploy image and create route in openshift
+* Then deploy image and create route in openshift
