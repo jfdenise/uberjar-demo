@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 
+<!-- Copy this content to provisioning.xml file and remove layers defined in pom.xml if you want to use Openshift WildFly galleon FP -->
+
 <installation xmlns="urn:jboss:galleon:provisioning:3.0">
     <feature-pack location="org.wildfly.galleon.s2i:wildfly-s2i-galleon-pack:18.0.0.Final">
          <default-configs inherit="false"/>
@@ -10,4 +12,7 @@
             <include name="jaxrs"/>
         </layers>
     </config>
+    <options>
+        <option name="optional-packages" value="passive+"/>
+    </options>
 </installation>
