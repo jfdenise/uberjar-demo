@@ -40,11 +40,10 @@
                 <artifactId>wildfly-uberjar-maven-plugin</artifactId>   
                 <version>${version.galleon}</version>
                 <configuration>
-                    <record-state>false</record-state>
-                    <offline>false</offline>
-                    <plugin-options>
-                        <jboss-fork-embedded>false</jboss-fork-embedded>
-                    </plugin-options>
+                    <!-- layers overrides galleon/provisioning.xml file -->
+                    <layers>
+                        <layer>jaxrs</layer>
+                    </layers>
                 </configuration>
                 <executions>
                     <execution>
