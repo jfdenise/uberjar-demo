@@ -24,5 +24,5 @@ NB: wildfly-uberjar-runtime-centos7 image is WIP evolution of wildfly-runtime im
 
 * oc import-image wildfly-uberjar-runtime --from=quay.io/jfdenise/wildfly-uberjar-runtime-centos7 --confirm
 * oc new-build --strategy source --binary --image-stream wildfly-uberjar-runtime --name test-uber
-* oc start-build test-uber --form-dir ./target/uberjar
+* oc start-build test-uber --from-dir ./target/uberjar
 * Then deploy image and create route in openshift
