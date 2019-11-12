@@ -12,10 +12,33 @@ Build
 * cd uberjar-demo
 * mvn package
 
-Run
+
+The uberjar can be run in multiple contexts.
+
+1- Run
 * java -jar target/uberjar/demo-uberjar-wildfly-uberjar.jar
 
-Run in Openshift
+The JAXRS endpoint listens on URL: http://localhost:8080/demo-uberjar/hello
+
+2- Create/Run Docker image
+
+The demo contains a Dockerfileto build an image from adoptopenjdk/openjdk11.
+
+* docker build -t demo-uberjar target/uberjar
+* docker run -p 8080 demo-uberjar
+
+3- Create an Openshift deployment from the dockerfile
+
+Openshift can be used to initiate a docker build and start the uberjar.
+
+* oc new-build --strategy docker --binary --name uberjar-demo
+* oc start-build uberjar-demo --from-dir target/uberjar
+* oc new-app uberjar-demo
+
+4- Run in Openshift with WildFly runtime image extended to handle uberjar in a lightweight s2i WorkFlow
+
+In order to benefit from a proper Openshift execution context (jolokia, python needed by probes, ...) when using Wildfly s2i galleon-pack, 
+a prototype of the WildFly runtime image has been created.
 
 NB: When run in openshift, a vanilla WildFly server is executed. There is no support in this example for Openshift specifics env vars. 
 WildFly s2i galleon feature-pack would need to be used at uberjar creation time to provision the full openshift support.
