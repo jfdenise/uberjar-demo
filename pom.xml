@@ -2,7 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    <parent>
+        <groupId>org.jboss</groupId>
+        <artifactId>jboss-parent</artifactId>
+        <version>36</version>
+    </parent>
     <groupId>com.example</groupId>
     <artifactId>demo-uberjar</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -35,15 +39,11 @@
         <finalName>${project.artifactId}</finalName>
 
         <plugins>
-           <plugin>
+            <plugin>
                 <groupId>org.wildfly.galleon-plugins</groupId>
                 <artifactId>wildfly-uberjar-maven-plugin</artifactId>   
                 <version>${version.galleon}</version>
                 <configuration>
-                    <!-- layers overrides galleon/provisioning.xml file -->
-                    <layers>
-                        <layer>jaxrs</layer>
-                    </layers>
                 </configuration>
                 <executions>
                     <execution>
@@ -57,7 +57,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
-                     <execution>
+                    <execution>
                         <id>copy-docker</id>
                         <phase>package</phase>
                         <goals>
